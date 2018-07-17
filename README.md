@@ -18,6 +18,10 @@ To keep up to date with how FlexSlider's development roadmap looks, please see o
 
 ## Updates
 
+** Version 2.7.1 **
+
+** RTL fixes for Firefox browser.
+
 ** Version 2.7.0 **
 
 ** Fixes resize method call for orientationchange. Adds RTL feature - param "rtl" added. **
@@ -210,3 +214,7 @@ Boolean. Whether or not you'd like FlexSlider to initialize as usual if only one
 ### rtl: *{new}*
 Boolean. False by default. Supports RTL functionality in the slider.
 *Note: you must add `style="direction:rtl"` to your container div in order for this to work.*
+
+### isFirefox: *{new}*
+Boolean. False by default. Set to true if the Firefox browser is in use.
+*Note: used for RTL compatibility logic.*
