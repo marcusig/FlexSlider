@@ -25,5 +25,13 @@
   "homepage": "https://github.com/woocommerce/FlexSlider#readme",
   "dependencies": {
     "jquery": ">=1.11.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.3",
+    "gulp-less": "^4.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0",
+    "less-plugin-autoprefix": "^1.5.1"
   }
 }

@@ -157,7 +157,7 @@
         if (touch && slider.vars.touch) { methods.touch(); }
 
         // FADE&&SMOOTHHEIGHT || SLIDE:
-        if (!fade || (fade && slider.vars.smoothHeight)) { $(window).bind("resize orientationchange focus", methods.resize); }
+        if (!fade || (fade && slider.vars.smoothHeight)) { $(window).on("resize orientationchange focus", methods.resize); }
 
         slider.find("img").attr("draggable", "false");
 
@@ -489,6 +489,20 @@
               }
               el.removeEventListener('touchend', onTouchEnd, false);
 
+              if (dx && scrolling) {
+                
+                // (scroll) Resume autoplay if slideshow is enabled
+                slider.vars.slideshow && slider.play();
+              } else if (dx) {
+                
+                // (swipe) Resume if pauseOnAction:false, else end slideshow
+                !slider.vars.pauseOnAction && slider.play() || (slider.vars.slideshow = false);
+              } else {
+                
+                // ("click") Resume if pauseOnAction:false, slideshow:true
+                (slider.vars.slideshow && !slider.vars.pauseOnAction) && slider.play() || (slider.vars.slideshow = false);
+              }
+
               startX = null;
               startY = null;
               dx = null;
@@ -574,6 +588,20 @@
                         if (!fade) { slider.flexAnimate(slider.currentSlide, slider.vars.pauseOnAction, true); }
                     }
                 }
+                
+                if (dx && scrolling) {
+                    
+                    // (scroll) Resume autoplay if slideshow is enabled
+                    slider.vars.slideshow && slider.play();
+                  } else if (dx) {
+                    
+                    // (swipe) Resume if pauseOnAction:false, else end slideshow
+                    !slider.vars.pauseOnAction && slider.play() || (slider.vars.slideshow = false);
+                  } else {
+                    
+                    // ("click") Resume if pauseOnAction:false, slideshow:true
+                    (slider.vars.slideshow && !slider.vars.pauseOnAction) && slider.play() || (slider.vars.slideshow = false);
+                  }
 
                 startX = null;
                 startY = null;
@@ -930,6 +958,8 @@
         }
         // INFINITE LOOP && !CAROUSEL:
         if (slider.vars.animationLoop && !carousel) {
+		  slider.doMath();
+		  slider.slides.css({ "width": slider.computedW, "marginRight": slider.computedM, "float": "left", "display": "block" });
           slider.cloneCount = 2;
           slider.cloneOffset = 1;
           // clear out old clones

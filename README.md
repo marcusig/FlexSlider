@@ -1,7 +1,6 @@
-[![Gitter chat](https://badges.gitter.im/woothemes/FlexSlider.png)](https://gitter.im/woothemes/FlexSlider)
 
-# FlexSlider 2.7.1
-http://www.woothemes.com/flexslider/ - Copyright (c) 2015 WooThemes
+
+Official [FlexSlider](http://www.woocommerce.com/flexslider/) fork used in MetaSlider
 
 ## Releases
 
