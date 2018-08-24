@@ -309,6 +309,9 @@
         update: function(action, pos) {
           if (slider.pagingCount > 1 && action === "add") {
             slider.controlNavScaffold.append($('<li><a href="#">' + slider.count + '</a></li>'));
+            slider.controlNavScaffold.find('li').each(function(ind, el) {
+              $(el).find('a').text(ind + 1);
+            });
           } else if (slider.pagingCount === 1) {
             slider.controlNavScaffold.find('li').remove();
           } else {
